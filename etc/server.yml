@@ -2,11 +2,21 @@ jtype: Flow
 version: '1'
 with:
   port: 51000
+  protocol: grpc
+  prefetch: null
 executors:
   - name: clip_t
+    replicas: 4
     uses:
       jtype: CLIPEncoder
       with:
+        name: M-CLIP/XLM-Roberta-Large-Vit-B-16Plus
+        num_worker_preprocess: 4
+        minibatch_size: 32
+        jit: True
+        device: cuda
       metas:
         py_modules:
           - clip_server.executors.clip_torch
+    monitoring: true
+    port_monitoring: 9091

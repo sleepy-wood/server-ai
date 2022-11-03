@@ -1,6 +1,15 @@
+import uvicorn
 from dotenv import load_dotenv
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get("/api/v1/")
+def root():
+    return {"hello world": "abc"}
 
 
 def main():
     load_dotenv()
-    print("Hello World")
+    uvicorn.run(app, host="0.0.0.0", port=3000)
