@@ -1,3 +1,5 @@
+import os
+
 import uvicorn
 from dotenv import load_dotenv
 from fastapi import FastAPI
@@ -12,4 +14,4 @@ def root():
 
 def main():
     load_dotenv()
-    uvicorn.run(app, host="0.0.0.0", port=3000)
+    uvicorn.run(app, host="0.0.0.0", port=os.environ.get("PORT", 3000))

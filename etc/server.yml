@@ -4,6 +4,8 @@ with:
   port: 51000
   protocol: grpc
   prefetch: null
+  monitoring: True
+  port_monitoring: 9090
 executors:
   - name: clip_t
     replicas: 4
