@@ -4,7 +4,7 @@ with:
   port: 51000
   protocol: grpc
   prefetch: null
-  monitoring: True
+  monitoring: true
   port_monitoring: 9090
 executors:
   - name: clip_t
@@ -15,7 +15,7 @@ executors:
         name: M-CLIP/XLM-Roberta-Large-Vit-B-16Plus
         num_worker_preprocess: 4
         minibatch_size: 32
-        jit: True
+        jit: true
         device: cuda
       metas:
         py_modules:
