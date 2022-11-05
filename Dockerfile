@@ -9,6 +9,8 @@ RUN mkdir app && touch app/__init__.py \
     && pip install --no-cache-dir $pkgs
 
 COPY . ./
-RUN pip install --no-cache-dir  --no-deps -e .
+RUN pip install --no-cache-dir --no-deps -e .
+
+EXPOSE 3000
 
 CMD ["app"]

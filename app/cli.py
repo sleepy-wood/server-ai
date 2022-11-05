@@ -1,8 +1,17 @@
-import os
-
 import uvicorn
-from dotenv import load_dotenv
 from fastapi import FastAPI
+from pydantic import BaseSettings
+
+
+class Settings(BaseSettings):
+    port: int = 8000
+    clip_host: str = "localhost"
+    clip_port: int = 51000
+
+    class Config:
+        env_file = ".env"
+        env_file_encoding = "utf-8"
+
 
 app = FastAPI()
 
@@ -13,5 +22,5 @@ def root():
 
 
 def main():
-    load_dotenv()
-    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", "8000")))
+    settings = Settings()
+    uvicorn.run(app, host="0.0.0.0", port=settings.port)
